@@ -1,7 +1,13 @@
 export const home = (req, res) => res.render("home", { pageTitle: "Home" });
 
-export const search = (req, res) =>
-  res.render("search", { pageTitle: "Search" });
+export const search = (req, res) => {
+  //const searchingBy = req.query.term; 원래 사용하던 방식
+  const {
+    // 새로운 방식.
+    query: { term: searchingBy },
+  } = req;
+  res.render("search", { pageTitle: "Search", searchingBy });
+};
 
 export const videos = (req, res) =>
   res.render("vidoes", { pageTitle: "Videos" });
